@@ -15,15 +15,14 @@
     "font-awesome": ">=4.1.0",
     "lodash": "~2.4.1",
     "angular-socket-io": "~0.6.0",
-    "animate.css": "~3.3.0",
     "open-iconic": "~1.1.1",
     "lightbox2": "~2.8.1",
     "waypoints": "~3.1.1",
-    "smoothscroll": "~0.1.0",
     "smoothscrolling": "~1.2.1",
     "peity": "~3.2.0",
     "owlcarousel": "~1.3.2",
-    "wow": "~1.1.2"
+    "wow": "~1.1.2",
+    "animate-css": "~3.3.0"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",

@@ -9,15 +9,18 @@
     <base href="/">
     <title></title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
+      <link rel="stylesheet" href="bower_components/lightbox2/dist/css/lightbox.css" />
+      <link rel="stylesheet" href="bower_components/animate-css/animate.css" />
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
     <link rel="stylesheet" href="app/app.css">
       <!-- injector:css -->
+      <link rel="stylesheet" href="app/styles.css">
       <!-- endinjector -->
     <!-- endbuild -->
   </head>
@@ -55,6 +58,11 @@
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
       <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/angular-socket-io/socket.js"></script>
+      <script src="bower_components/lightbox2/dist/js/lightbox.js"></script>
+      <script src="bower_components/waypoints/lib/noframework.waypoints.min.js"></script>
+      <script src="bower_components/smoothscrolling/smoothscroll.js"></script>
+      <script src="bower_components/peity/jquery.peity.js"></script>
+      <script src="bower_components/wow/dist/wow.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
@@ -68,6 +76,7 @@
           <script src="app/account/signup/signup.controller.js"></script>
           <script src="app/admin/admin.controller.js"></script>
           <script src="app/admin/admin.js"></script>
+          <script src="app/custom.js"></script>
           <script src="app/main/main.controller.js"></script>
           <script src="app/main/main.js"></script>
           <script src="components/auth/auth.service.js"></script>
