@@ -55,6 +55,7 @@ module.exports = function (grunt) {
       }
     },
     watch: {
+    //watch the files and run the task
       injectJS: {
         files: [
           '<%= yeoman.client %>/{app,components}/**/*.js',
@@ -94,6 +95,7 @@ module.exports = function (grunt) {
         files: ['Gruntfile.js']
       },
       livereload: {
+      //live reload the files compiled to css,   
         files: [
           '{.tmp,<%= yeoman.client %>}/{app,components}/**/*.css',
           '{.tmp,<%= yeoman.client %>}/{app,components}/**/*.html',
@@ -117,6 +119,7 @@ module.exports = function (grunt) {
         }
       }
     },
+    //end watch
 
     // Make sure code styles are up to par and there are no obvious mistakes
     jshint: {
@@ -222,8 +225,9 @@ module.exports = function (grunt) {
     wiredep: {
       target: {
         src: '<%= yeoman.client %>/index.html',
-        ignorePath: '<%= yeoman.client %>/',
-        exclude: [/bootstrap-sass-official/, /bootstrap.js/, '/json3/', '/es5-shim/', /bootstrap.css/, /font-awesome.css/ ]
+        //the path injected in index.html will start with bower_component without "client" in front
+        ignorePath: '<%= yeoman.client %>/',  
+        exclude: [/bootstrap-sass-official/, /bootstrap.js/, '/json3/', '/es5-shim/', /bootstrap.css/]
       }
     },
 
