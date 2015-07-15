@@ -1,4 +1,19 @@
+<<<<<<< HEAD
 // Generated on 2015-07-03 using generator-angular-fullstack 2.0.13
+=======
+// Generated on 2015-07-11 using generator-angular-fullstack 2.0.13
+
+// * matches any number of characters, but not /
+// ? matches a single character, but not /
+// ** matches any number of characters, including /, as long as it's the only thing in a path part
+// {} allows for a comma-separated list of "or" expressions
+// ! at the beginning of a pattern will negate the match
+
+// foo/*.js will match all files ending with .js in the foo/ subdirectory, 
+// but foo/**/*.js will match all files ending with .js in the foo/ subdirectory 
+// and all of its subdirectories.
+
+>>>>>>> 706aa498d473b00cd76b1c4e4d21f2e416d7063f
 'use strict';
 
 //the grunt wrapper function, all grunt tasks have to be included in this function
@@ -57,6 +72,7 @@ module.exports = function (grunt) {
       }
     },
     watch: {
+    //watch the files and run the task, ignore spec.js, mock.js and app.js which will be injected manually 
       injectJS: {
         files: [
           '<%= yeoman.client %>/{app,components}/**/*.js',
@@ -96,6 +112,7 @@ module.exports = function (grunt) {
         files: ['Gruntfile.js']
       },
       livereload: {
+      //live reload the files compiled to css,   
         files: [
           '{.tmp,<%= yeoman.client %>}/{app,components}/**/*.css',
           '{.tmp,<%= yeoman.client %>}/{app,components}/**/*.html',
@@ -119,6 +136,7 @@ module.exports = function (grunt) {
         }
       }
     },
+    //end watch
 
     // Make sure code styles are up to par and there are no obvious mistakes
     jshint: {
@@ -224,8 +242,9 @@ module.exports = function (grunt) {
     wiredep: {
       target: {
         src: '<%= yeoman.client %>/index.html',
-        ignorePath: '<%= yeoman.client %>/',
-        exclude: [/bootstrap-sass-official/, /bootstrap.js/, '/json3/', '/es5-shim/', /bootstrap.css/, /font-awesome.css/ ]
+        //the path injected in index.html will start with bower_component without "client" in front
+        ignorePath: '<%= yeoman.client %>/',  
+        exclude: [/bootstrap-sass-official/, /bootstrap.js/, '/json3/', '/es5-shim/', /bootstrap.css/]
       }
     },
 
@@ -465,7 +484,9 @@ module.exports = function (grunt) {
       all: localConfig // As defined above, localConfig = require ('./server/config/local.env')
     },
 
-    // Compiles Less to CSS
+    // Compiles Less to CSS, less will compile app/app.less file into .tmp/app/app.css (dest)
+    //, all the import in the app.less will be imported from the three folders in path:
+  
     less: {
       options: {
         paths: [
@@ -476,6 +497,7 @@ module.exports = function (grunt) {
       },
       server: {
         files: {
+          // dest : src 
           '.tmp/app/app.css' : '<%= yeoman.client %>/app/app.less'
         }
       },
@@ -485,7 +507,8 @@ module.exports = function (grunt) {
       options: {
 
       },
-      // Inject application script files into index.html (doesn't include bower)
+      // Inject application script files into index.html 
+      // don't inject .spec.js, mock.js and app.js
       scripts: {
         options: {
           transform: function(filePath) {
