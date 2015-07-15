@@ -14,6 +14,8 @@
 
 //the grunt wrapper function, all grunt tasks have to be included in this function
 //grunt is a javascript file, so javascrit function can be used
+//test
+
 module.exports = function (grunt) {
   var localConfig;
   try {
