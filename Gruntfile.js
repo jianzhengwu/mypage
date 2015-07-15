@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-// Generated on 2015-07-03 using generator-angular-fullstack 2.0.13
-=======
 // Generated on 2015-07-11 using generator-angular-fullstack 2.0.13
 
 // * matches any number of characters, but not /
@@ -13,7 +10,6 @@
 // but foo/**/*.js will match all files ending with .js in the foo/ subdirectory 
 // and all of its subdirectories.
 
->>>>>>> 706aa498d473b00cd76b1c4e4d21f2e416d7063f
 'use strict';
 
 //the grunt wrapper function, all grunt tasks have to be included in this function
