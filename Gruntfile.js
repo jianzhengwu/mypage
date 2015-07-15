@@ -1,4 +1,15 @@
 // Generated on 2015-07-11 using generator-angular-fullstack 2.0.13
+
+// * matches any number of characters, but not /
+// ? matches a single character, but not /
+// ** matches any number of characters, including /, as long as it's the only thing in a path part
+// {} allows for a comma-separated list of "or" expressions
+// ! at the beginning of a pattern will negate the match
+
+// foo/*.js will match all files ending with .js in the foo/ subdirectory, 
+// but foo/**/*.js will match all files ending with .js in the foo/ subdirectory 
+// and all of its subdirectories.
+
 'use strict';
 
 module.exports = function (grunt) {
@@ -55,7 +66,7 @@ module.exports = function (grunt) {
       }
     },
     watch: {
-    //watch the files and run the task
+    //watch the files and run the task, ignore spec.js, mock.js and app.js which will be injected manually 
       injectJS: {
         files: [
           '<%= yeoman.client %>/{app,components}/**/*.js',
@@ -467,7 +478,9 @@ module.exports = function (grunt) {
       all: localConfig
     },
 
-    // Compiles Less to CSS
+    // Compiles Less to CSS, less will compile app/app.less file into .tmp/app/app.css (dest)
+    //, all the import in the app.less will be imported from the three folders in path:
+  
     less: {
       options: {
         paths: [
@@ -478,6 +491,7 @@ module.exports = function (grunt) {
       },
       server: {
         files: {
+          // dest : src 
           '.tmp/app/app.css' : '<%= yeoman.client %>/app/app.less'
         }
       },
@@ -487,7 +501,8 @@ module.exports = function (grunt) {
       options: {
 
       },
-      // Inject application script files into index.html (doesn't include bower)
+      // Inject application script files into index.html 
+      // don't inject .spec.js, mock.js and app.js
       scripts: {
         options: {
           transform: function(filePath) {
