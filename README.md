@@ -10,37 +10,33 @@
 8. API operation (server/api...), i.e. dedicated server operation for an incomming http request, handling and return the response to client 
 
 ##Grunt
-* matches any number of characters, but not /
+*`*` matches any number of characters, but not /
+*`?` matches a single character, but not /
+*`**`matches any number of characters, including /, as long as it's the only thing in a path part
+*`{}`allows for a comma-separated list of "or" expressions
+*`!` at the beginning of a pattern will negate the match
 
-? matches a single character, but not /
-
-** matches any number of characters, including /, as long as it's the only thing in a path part
-
-{} allows for a comma-separated list of "or" expressions
-
-! at the beginning of a pattern will negate the match
-
-foo/*.js will match all files ending with .js in the foo/ subdirectory, 
-foo/**/*.js will match all files ending with .js in the foo/ subdirectory and all of its subdirectories.
+ foo/*.js will match all files ending with .js in the foo/ subdirectory, 
+ foo/**/*.js will match all files ending with .js in the foo/ subdirectory and all of its subdirectories.
 
 Task build contains:
 
-'clean:dist', //delete temp files which has been created by previous build
-'injector:less', // inject all less files into the app.less, they will be added as @import between the injector and endinjector in the app.less 
-'concurrent:dist', //run tasks in parallel
-'injector', // inject all scripts (js) and css into index.html between injector:<type> and endinjector
-'wiredep', // inject bower components (js and css) into index.html between bower:<type> and endbower
-'useminPrepare', //
-    'autoprefixer',
-    'ngtemplates',
-    'concat',
-    'ngAnnotate',
-    'copy:dist',
-    'cdnify',
-    'cssmin',
-    'uglify',
-    'rev',
-'usemin'
+*'clean:dist', //delete temp files which has been created by previous build
+*'injector:less', // inject all less files into the app.less, they will be added as @import between the injector and *endinjector in the app.less 
+*'concurrent:dist', //run tasks in parallel
+*'injector', // inject all scripts (js) and css into index.html between injector:<type> and endinjector
+*'wiredep', // inject bower components (js and css) into index.html between bower:<type> and endbower
+*'useminPrepare', //optimization tasks between useminPrepare and usemin will be executed on the scripts/css between the block: <!-- build:<type>(alternate search path) <path> --> <path> is the optimized file, i.e. the destination    
+  *'autoprefixer',
+  *'ngtemplates',
+  *'concat',
+  *'ngAnnotate',
+  *'copy:dist',
+  *'cdnify',
+  *'cssmin',
+  *'uglify',
+  *'rev',
+*'usemin'
 
 
 ##http knowledge
