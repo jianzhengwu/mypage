@@ -1,4 +1,4 @@
-# freightinsight
+# Homepage
 ##process
 1. do grunt serve, this will use Gruntfile.js task "serve" (grunt.registerTask('serve', function (target)) to lauches all the tasks defined in "serve". Please note that grunt serve:dist lauches the tasks defined in the target "dist"
 2. the "serve" task clean the temperal build files and launch the Express() server 

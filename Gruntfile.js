@@ -12,10 +12,6 @@
 
 'use strict';
 
-//the grunt wrapper function, all grunt tasks have to be included in this function
-//grunt is a javascript file, so javascrit function can be used
-//test
-
 module.exports = function (grunt) {
   var localConfig;
   try {
@@ -38,7 +34,7 @@ module.exports = function (grunt) {
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
 
-  // Define the configuration for all the tasks, those tasks and targets will be used by grunt.registerTask...
+  // Define the configuration for all the tasks
   grunt.initConfig({
 
     // Project settings
@@ -184,7 +180,7 @@ module.exports = function (grunt) {
           ]
         }]
       },
-      server: '.tmp' //remove all file with suffix tmp
+      server: '.tmp'
     },
 
     // Add vendor prefixed styles
@@ -329,7 +325,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       options: {
         // This should be the name of your apps angular module
-        module: 'freightinsightApp',
+        module: 'mypageApp',
         htmlmin: {
           collapseBooleanAttributes: true,
           collapseWhitespace: true,
@@ -479,7 +475,7 @@ module.exports = function (grunt) {
       prod: {
         NODE_ENV: 'production'
       },
-      all: localConfig // As defined above, localConfig = require ('./server/config/local.env')
+      all: localConfig
     },
 
     // Compiles Less to CSS, less will compile app/app.less file into .tmp/app/app.css (dest)
@@ -519,7 +515,7 @@ module.exports = function (grunt) {
         },
         files: {
           '<%= yeoman.client %>/index.html': [
-              ['{.tmp,<%= yeoman.client %>}/{app,nmponents}/**/*.js',
+              ['{.tmp,<%= yeoman.client %>}/{app,components}/**/*.js',
                '!{.tmp,<%= yeoman.client %>}/app/app.js',
                '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.spec.js',
                '!{.tmp,<%= yeoman.client %>}/{app,components}/**/*.mock.js']
@@ -527,6 +523,7 @@ module.exports = function (grunt) {
         }
       },
 
+      // Inject component less into app.less
       less: {
         options: {
           transform: function(filePath) {
@@ -565,10 +562,6 @@ module.exports = function (grunt) {
     },
   });
 
-    
-// creating tasks...
-    
-    
   // Used for delaying livereload until after server has restarted
   grunt.registerTask('wait', function () {
     grunt.log.ok('Waiting for server reload...');
@@ -585,14 +578,11 @@ module.exports = function (grunt) {
     this.async();
   });
 
-//use grunt serve for preview and grunt serve:dist to generate the dist 
   grunt.registerTask('serve', function (target) {
-
-//grunt serve:dist 
     if (target === 'dist') {
       return grunt.task.run(['build', 'env:all', 'env:prod', 'express:prod', 'wait', 'open', 'express-keepalive']);
     }
-//grunt serve:debug
+
     if (target === 'debug') {
       return grunt.task.run([
         'clean:server',
@@ -606,20 +596,19 @@ module.exports = function (grunt) {
       ]);
     }
 
-// when we do grunt serve, grunt jumps to below code directly
     grunt.task.run([
-      'clean:server', //remove .tmp files 
-      'env:all',      //set the env parameter defined in './server/config/local.env'
-      'injector:less', // Inject component less into app.less
-      'concurrent:server', //run some tasks in parallel to spead up 
+      'clean:server',
+      'env:all',
+      'injector:less', 
+      'concurrent:server',
       'injector',
       'wiredep',
       'autoprefixer',
-      'express:dev', //defining the express launch script is app.js
+      'express:dev',
       'wait',
       'open',
       'watch'
-    ]); 
+    ]);
   });
 
   grunt.registerTask('server', function () {
@@ -675,13 +664,14 @@ module.exports = function (grunt) {
     'concurrent:dist',
     'injector',
     'wiredep',
-    'useminPrepare', //between usemin prepare and usemin, the tasks to optimize the code like concat and uglify...
+    'useminPrepare',
     'autoprefixer',
     'ngtemplates',
     'concat',
     'ngAnnotate',
     'copy:dist',
     'cdnify',
+    'cssmin',
     'uglify',
     'rev',
     'usemin'
