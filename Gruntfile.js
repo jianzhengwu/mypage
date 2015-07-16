@@ -238,7 +238,7 @@ module.exports = function (grunt) {
         src: '<%= yeoman.client %>/index.html',
         //the path injected in index.html will start with bower_component without "client" in front
         ignorePath: '<%= yeoman.client %>/',  
-        exclude: [/bootstrap-sass-official/, /bootstrap.js/, '/json3/', '/es5-shim/', /bootstrap.css/]
+        exclude: [/bootstrap-sass-official/, '/json3/', '/es5-shim/', /bootstrap.css/]
       }
     },
 

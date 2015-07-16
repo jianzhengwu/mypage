@@ -1,12 +1,12 @@
 /*------------------------------------------------------------------
-Project:        Landitt
-Author:         Yevgeny Simzikov
-URL:            http://simpleqode.com/
-                https://twitter.com/YevSim
-                https://www.facebook.com/simpleqode
-Version:        1.0.0
-Created:        27/05/2015
-Last change:    27/05/2015
+Project:        
+Author:        
+URL:            
+               
+                
+Version:        
+Created:        
+Last change:    
 -------------------------------------------------------------------*/
 
 /**

@@ -27,17 +27,21 @@ Task build contains:
 *'injector', // inject all scripts (js) and css into index.html between injector:<type> and endinjector
 *'wiredep', // inject bower components (js and css) into index.html between bower:<type> and endbower
 *'useminPrepare', //optimization tasks between useminPrepare and usemin will be executed on the scripts/css between the block: <!-- build:<type>(alternate search path) <path> --> <path> is the optimized file, i.e. the destination    
-  *'autoprefixer',
-  *'ngtemplates',
-  *'concat',
+  *'autoprefixer', // add vendor prefix
+  *'ngtemplates', // cache angular templates (html) for performance 
+  *'concat', // concat the js and the css
   *'ngAnnotate',
-  *'copy:dist',
-  *'cdnify',
-  *'cssmin',
-  *'uglify',
+  *'copy:dist', 
+  *'cdnify', //replace bower components by google CDN
+  *'cssmin', // minify css
+  *'uglify', // uglify js
   *'rev',
-*'usemin'
+*'usemin' //end optimization
 
+When we do grunt serve, grunt will create a temperal server livereload. This server looks at .tmp and client
+this is why the app.css stays in .tmp and not in client
+
+http://localhost:<%= express.options.port %>
 
 ##http knowledge
 
