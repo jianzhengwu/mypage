@@ -12,6 +12,11 @@ Last change:
 /**
  * Navigation
  */
+ 
+/*test*/
+
+$("#jianzheng").hide();  
+ 
 
 /* Auto close navbar on click (mobile menu) */
 
